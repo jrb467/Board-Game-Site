@@ -147,6 +147,8 @@ return [
 
 		/* Other providers */
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Way\Generators\GeneratorsServiceProvider',
+        'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider'
 	],
 
 	/*

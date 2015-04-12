@@ -13,6 +13,6 @@ class Signup extends Model {
     }
 
     public function player(){
-        return $this->belongsTo('App\Player', 'username');
+        return $this->belongsToMany('App\Player', 'username');
     }
 }
