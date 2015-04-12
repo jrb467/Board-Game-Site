@@ -1,0 +1,41 @@
+@font-face {
+    font-family: Curvy;
+    src: url('/fonts/LavosHandy_99.ttf');
+}
+
+body{
+    background-color: #ddddaa;
+}
+
+* {
+    font-family: Curvy;
+    text-align: center;
+}
+
+h1 {
+    background-color: #bbbb88;
+    padding: 1em;
+    margin: 0;
+    font-size: 72px;
+}
+
+h3 {
+    margin: 3em;
+    font-family: Verdana;
+}
+
+a {
+    padding:1em;
+    height: 1em;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #000000;
+    background-color: #dddddd;
+    border: 2px solid #777777;
+    border-radius: 2em;
+    transition: background-color .2s;
+}
+
+a:hover {
+    background-color: #bbbbbb;
+}

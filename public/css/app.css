@@ -1,0 +1,31 @@
+html {
+    background-color: #c4f5ff;
+}
+
+body{
+    margin-left: 150px;
+    padding: 1em;
+}
+input {
+    display: inline-block;
+    margin: .5em;
+}
+
+.sidebar{
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #00b3ee;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.padded{
+    padding: 1em;
+}
