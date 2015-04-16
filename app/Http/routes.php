@@ -14,7 +14,10 @@
 Route::get('/', 'HomeController@index');
 Route::post('add_player', 'HomeController@add_player');
 Route::post('add_game', 'HomeController@add_game');
-Route::post('add_signup', 'HomeController@add_signup');
+Route::post('add_event', 'HomeController@add_event');
+Route::get('create', function (){
+    return view('create');
+});
 Route::get('info', 'HomeController@info');
 Route::get('cal', function (){
     return view('calendar');

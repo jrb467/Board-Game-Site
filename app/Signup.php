@@ -2,17 +2,27 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Signup
+ *
+ * @property \App\Player $player 
+ * @property \App\Event $event 
+ * @property boolean $first_time 
+ * @method static \Illuminate\Database\Query\Builder|\App\Signup wherePlayer($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Signup whereEvent($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Signup whereFirstTime($value)
+ */
 class Signup extends Model {
 
 	//
-    protected $fillable = ['game_name', 'start_time', 'first_time'];
-    protected $primaryKey = 'signup_id';
+    protected $fillable = ['player', 'event'];
+    protected $primaryKey = ['player', 'event'];
 
-    public function game(){
-        return $this->belongsTo('App\Game', 'game_name');
+    public function event(){
+        return $this->belongsTo('App\Event', 'id');
     }
 
     public function player(){
-        return $this->belongsToMany('App\Player', 'username');
+        return $this->belongsTo('App\Player', 'username');
     }
 }

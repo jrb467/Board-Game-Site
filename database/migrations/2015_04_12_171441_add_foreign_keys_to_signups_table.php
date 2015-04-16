@@ -14,8 +14,8 @@ class AddForeignKeysToSignupsTable extends Migration {
 	{
 		Schema::table('signups', function(Blueprint $table)
 		{
-			$table->foreign('username', 'signups_ibfk_1')->references('username')->on('players')->onUpdate('CASCADE')->onDelete('CASCADE');
-			$table->foreign('game_name', 'signups_ibfk_2')->references('name')->on('games')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('player', 'signups_ibfk_1')->references('username')->on('players')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('event', 'signups_ibfk_2')->references('id')->on('events')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 

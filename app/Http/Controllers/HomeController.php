@@ -3,6 +3,7 @@
 use App\Player;
 use App\Game;
 use App\Signup;
+use App\Event;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Http\Response;
@@ -46,10 +47,10 @@ class HomeController extends Controller {
         return redirect()->back();
     }
 
-    public function add_signup(Request $request){
-        $username = $request->input('username');
+    public function add_event(Request $request){
         $game = $request->input('game');
         $time = $request->input('time');
+        /**
         if($request->has('first_time')){
             if($request->input('first_time') == "true"){
                 $first = 1;
@@ -59,14 +60,17 @@ class HomeController extends Controller {
         }else{
             $first = 0;
         }
+         * **/
 
-        $signup = new Signup();
-        $signup->start_time = $time;
-        $signup->first_time = $first;
-        $signup->username = $username;
-        $signup->game_name = $game;
-        $signup->save();
-        return redirect()->back();
+        $event = new Event();
+        $event->start_time = $time;
+        /**
+         * $event->username = $username;
+         * NOTE: should also create a signup here too
+         */
+        $event->game_name = $game;
+        $event->save();
+        return redirect('/cal');
     }
 
 	public function info()
@@ -75,8 +79,9 @@ class HomeController extends Controller {
 	}
 
     public function event($id){
-        $signup = Signup::whereSignupId($id)->join('games', 'game_name', '=', 'name')->first();
-        return view('event', ['signup' => $signup]);
+        $event = Event::whereEventId($id)->join('games', 'game_name', '=', 'name')->first();
+        if(is_null($event)) return view('index');
+        return view('event', ['event' => $event]);
     }
 
     public function game($name){
@@ -88,8 +93,8 @@ class HomeController extends Controller {
         }
     }
 
-    public function delete_event($id){
-        Signup::destroy([$id]);
+    public function delete_event($event_id){
+        Event::destroy([$event_id]);
         return redirect('/cal');
     }
 
@@ -107,7 +112,7 @@ class HomeController extends Controller {
             $end = new \DateTime();
             $end->setTimestamp($request->get('end'));
 
-            $query = \DB::table('signups')->join('games', 'game_name', '=', 'name')->select(['signup_id', 'start_time', 'game_name', 'min_length','max_length']);
+            $query = \DB::table('events')->join('games', 'game_name', '=', 'name')->select(['event_id', 'start_time', 'game_name', 'min_length','max_length']);
             $times = $query->where('start_time', '<', $end)->where('start_time', '>', $start)->orderBy('start_time')->get();
             $content = json_encode($times);
             $response = new Response($content, 200);

@@ -15,7 +15,6 @@
         echo "<li>" . $msg . "</li>";
     }
     echo "</ul>";
-    echo "<p>" . $errors->toJson() . "</p>";
 ?>
 
 <h1>Donlon <b><i>5</i></b> Board Games</h1>
@@ -45,7 +44,7 @@
 </form>
 
 
-<form action='add_signup' method='POST'>
+<form action='add_event' method='POST'>
     <h2>Signup!</h2>
     Player Username: <input type='text' name='username'><br>
     Game Name: <input type='text' name='game'><br>
@@ -54,7 +53,7 @@
     <input type='submit' value='Signup'><br>
     <input type='hidden' name='_token' id='csrf-token' value='{{ Session::token() }}'>
 </form>
-<p><a href="info">Info Page</a></p>
+<p><a class='button' href="info">Info Page</a></p>
 
 <?php
     $players = DB::select('select * from players');
@@ -75,11 +74,11 @@
     echo "</p>";
 
 
-    $signups = DB::select('select * from signups');
-    echo "<h3>Signups:</h3><p>";
-    foreach($signups as $signup){
-        echo "Player Username: " . $signup->username . "<br>Game: " . $signup->game_name . "<br>Time: "
-                . $signup->start_time . "<br><br>";
+    $events = DB::select('select * from events');
+    echo "<h3>Events:</h3><p>";
+    foreach($events as $event){
+        echo "Game: " . $event->game_name . "<br>Time: "
+                . $event->start_time . "<br><br>";
     }
     echo "</p>";
 ?>

@@ -1,6 +1,5 @@
-a.button {
+.button {
     display: inline-block;
-    height: 1em;
     font-family: sans-serif;
     text-decoration: none;
     color: #000000;
@@ -12,6 +11,40 @@ a.button {
     margin: 1em;
 }
 
-a.button:hover {
+.button:hover {
     background-color: #bbbbbb;
+}
+
+.button-prim {
+    display: block;
+    height: 1em;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #000000;
+    background-color: #dddddd;
+    border: 2px solid #777777;
+    border-radius: 2em;
+    transition: background-color .2s;
+    padding:.5em;
+    margin: .5em;
+}
+
+.button-prim:hover {
+    background-color: #bbbbbb;
+}
+
+.accept {
+    background-color: #66ff66;
+}
+
+.accept:hover {
+    background-color: #44dd44;
+}
+
+.reject {
+    background-color: #ff6666;
+}
+
+.reject:hover {
+    background-color: #dd4444;
 }

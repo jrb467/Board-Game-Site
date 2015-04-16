@@ -4,7 +4,7 @@ table {
     width: 95%;
 }
 
-td{
+td {
     border-top: 1px solid #777777;
     border-bottom: 1px solid #777777;
     transition: background .2s;
@@ -24,7 +24,7 @@ td.heading {
 }
 
 td.cal {
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     width: 85%;
     min-width: 10em;
@@ -80,6 +80,8 @@ div.event p{
     font-size: 20px;
     text-align: center;
     width: 100%;
+
+    overflow: visible;
 }
 
 div.event .hover p {
@@ -98,6 +100,23 @@ div.event:hover {
     background-color: #ffaaaa;
     border: 2px solid #bb8888;
     z-index: 1;
+}
+
+#create {
+    position: absolute;
+    display: inline-block;
+    visibility: hidden;
+    text-align: center;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: .4em;
+    padding: 1em;
+    z-index: 1;
+}
+
+#create p{
+    margin: 0;
+    display: inline-block;
 }
 
 img.icon {

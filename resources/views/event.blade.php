@@ -1,18 +1,18 @@
 @extends('app')
 
 @section('title')
-    {{ $signup->game_name }}
+    {{ $event->game_name }}
 @stop
 
 @section('content')
     <h2>Start Time: </h2>
-    <p>{{ (new DateTime($signup->start_time))->format('l \@ H:i a, m/d/y') }}</p>
+    <p>{{ (new DateTime($event->start_time))->format('l \@ H:i a, m/d/y') }}</p>
     <h2>Min length: </h2>
-    <p>{{ $signup->min_length }}</p>
+    <p>{{ $event->min_length }}</p>
     <h2>Game name: </h2>
-    <p>{{ $signup->game_name }}</p>
+    <p>{{ $event->game_name }}</p>
     <?php
-        echo "<form action='/delete/" . $signup->signup_id . "'>";
+        echo "<form action='/delete/" . $event->event_id . "'>";
         echo "<input type='submit' value='Delete Event'></form>";
     ?>
 @stop
