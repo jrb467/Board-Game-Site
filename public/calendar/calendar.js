@@ -6,7 +6,7 @@ $(document).ready(function() {
         e.stopPropagation();
     });
     $("td.cal").click(function (e) {
-        var row = $(this).parent().parent().children().index($(this).parent());
+        var row = $(this).parent().parent().children().index($(this).parent()) - 1;
         var pos = $(this).position().left;
 
         var width = $(this).width();
@@ -19,7 +19,7 @@ $(document).ready(function() {
         var eventTime = timeFromDayAndFraction(week, row, fraction);
 
         create.offset({top: e.pageY - (.5 * create.outerHeight()), left: e.pageX - (.5 * create.outerWidth())}).css("visibility", "visible");
-        create.find("p").empty().append(eventTime.format());
+        create.find("p").empty().append(eventTime.toString());
         var link = create.find('a');
         link.attr("href", "/create?time=" + eventTime.getTime());
     });
@@ -68,7 +68,7 @@ $(document).ready(function() {
                 var lastHalf = json[i].start_time.substr(11);
                 var dateString= firstHalf + "T" + lastHalf + "Z";
                 var date = new Date(dateString); //CHECK Date.parse() to ensure proper formatting
-                while(date.getTime() > dayEnd.getTime() && curDay < 7){
+                while(date.getTime() >= dayEnd.getTime() && curDay < 7){
                     curDay++;
                     dayEnd.setDate(dayEnd.getDate() + 1);
                     first_flag = true;
@@ -76,7 +76,7 @@ $(document).ready(function() {
                 if(curDay == 7){
                     return;
                 }
-                var dayElem = $("tr:nth-child(" + (curDay+1) + ") td.cal");
+                var dayElem = $("tr:nth-child(" + (curDay+2) + ") td.cal");
                 if(first_flag){
                     dayElem.empty();
                     first_flag = false;
@@ -121,8 +121,10 @@ function startOfWeek(){
     return cur;
 }
 
-function cleanFormat(date){
-    var day = date.getD
+function formatTime(date){
+    var hours = date.getHours();
+    var e = 3;
+    return hours;
 }
 
 function endOfWeek(){

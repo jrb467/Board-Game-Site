@@ -4,6 +4,7 @@ use App\Player;
 use App\Game;
 use App\Signup;
 use App\Event;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Http\Response;
@@ -102,11 +103,14 @@ class HomeController extends Controller {
         $signup->player = $request->input('username');
         $signup->event = $id;
         $signup->first_time = $first;
-        if($signup->save()){
+        try{
+            $signup->push();
+        }catch (\ErrorException $fuckingbullshit){
             return redirect()->back();
-        }else{
-            return view('index');
+        }catch (QueryException $a_much_more_reasonable_exception){
+            abort(409);
         }
+        return redirect()->back();
     }
 
     public function game($name){

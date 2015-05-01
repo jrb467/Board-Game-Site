@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 class Signup extends Model {
 
 	//
-    protected $fillable = ['player', 'event'];
+    protected $fillable = ['player', 'event', 'first_time'];
     protected $primaryKey = ['player', 'event'];
 
     public function event(){

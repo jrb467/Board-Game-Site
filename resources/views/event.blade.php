@@ -20,9 +20,10 @@
     <h2>Players:</h2>
     <ul>
     <?php
-        $players = DB::select('select * from events join signups on events.event_id = signups.event join players on signups.player = players.username');
+        $query = \DB::table('events')->join('signups', 'event_id', '=', 'event')->join('players', 'player', '=', 'username')->where('event_id', '=', $event->event_id);
+        $players = $query->get(['name', 'username']);
         foreach($players as $player){
-            echo "<li>" . $player->player . "</li>";
+            echo "<li>" . $player->name . "</li>";
         }
     ?>
     </ul>
