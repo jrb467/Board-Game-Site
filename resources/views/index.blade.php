@@ -50,7 +50,7 @@
     Game Name: <input type='text' name='game'><br>
     Starting Time: <input type='datetime-local' name='time'><br>
     <input type='checkbox' name='first_time' value="true">First Time?<br>
-    <input type='submit' value='Signup'><br>
+    <input class="button" type='submit' value='Signup'><br>
     <input type='hidden' name='_token' id='csrf-token' value='{{ Session::token() }}'>
 </form>
 <p><a class='button' href="info">Info Page</a></p>
@@ -79,6 +79,14 @@
     foreach($events as $event){
         echo "Game: " . $event->game_name . "<br>Time: "
                 . $event->start_time . "<br><br>";
+    }
+    echo "</p>";
+
+
+    $signups = DB::select('select * from signups');
+    echo "<h3>Signups:</h3><p>";
+    foreach($signups as $signup){
+        echo "Username: " . $signup->player . "<br>Event ID: " . $signup->event . "<br><br>";
     }
     echo "</p>";
 ?>

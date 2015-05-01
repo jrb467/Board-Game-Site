@@ -23,6 +23,8 @@ Route::get('cal', function (){
     return view('calendar');
 });
 Route::get('events/{id}', 'HomeController@event');
+Route::post('events/{id}/signup', 'HomeController@event_signup');
+
 Route::get('games/{name}', 'HomeController@game');
 Route::get('delete/{id}', 'HomeController@delete_event');
 Route::get('cal/events', 'HomeController@get_events');

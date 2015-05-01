@@ -4,7 +4,7 @@
     Create Event
 @stop
 
-@section('content')
+@section('cont')
 
     <?php
         $time = (new DateTime())->setTimestamp(Input::get('time')/1000);
@@ -12,7 +12,7 @@
 
     <h1>Create an Event!</h1>
     <h3>Time:</h3>
-    {{ $time->format("h:i:s a, F jS, Y") }}
+    {{ $time->format("l \@ h:i:s a, F jS, Y O e") }}
     <h3>Game:</h3>
     <select name="game" form="create">
     <?php

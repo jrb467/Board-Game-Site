@@ -4,7 +4,7 @@
     Info
 @stop
 
-@section('content')
+@section('cont')
 
 <p>This is a page</p>
 

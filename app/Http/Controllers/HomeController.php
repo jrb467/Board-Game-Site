@@ -7,6 +7,7 @@ use App\Event;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller {
 
@@ -82,6 +83,30 @@ class HomeController extends Controller {
         $event = Event::whereEventId($id)->join('games', 'game_name', '=', 'name')->first();
         if(is_null($event)) return view('index');
         return view('event', ['event' => $event]);
+    }
+
+    public function event_signup(Request $request, $id){
+        if(! $request->has('username')){
+            abort(403);
+        }
+        if($request->has('first_time')){
+            if($request->input('first_time') == "true"){
+                $first = 1;
+            }else{
+                $first = 0;
+            }
+        }else{
+            $first = 0;
+        }
+        $signup = new Signup();
+        $signup->player = $request->input('username');
+        $signup->event = $id;
+        $signup->first_time = $first;
+        if($signup->save()){
+            return redirect()->back();
+        }else{
+            return view('index');
+        }
     }
 
     public function game($name){

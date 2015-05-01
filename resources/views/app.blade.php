@@ -6,12 +6,7 @@
 @stop
 
 @section('content')
-	@yield('cont')
-
-    <div class="sidebar">
-        <div class="center padded">
-            <button value="Shit" onclick="dankMemes()">Dank Memes</button>
-            <p id="memeclass"></p>
-        </div>
+    <div id="content">
+        @yield('cont')
     </div>
 @stop
