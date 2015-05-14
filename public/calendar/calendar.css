@@ -50,6 +50,8 @@ td.heading {
 }
 
 td.cal {
+    display: table-cell;
+    vertical-align: middle;
     position: relative;
     height: 5em;
     width: 100%;
@@ -58,10 +60,10 @@ td.cal {
         #eeeeee 49%, #bbbbbb 49%, #bbbbbb 50%, #eeeeee 50%,
         #eeeeee 74%, #dddddd 74%, #dddddd 75%, #eeeeee 75%,
         #eeeeee 99%, #888888 99%, #888888 100%);
-    background-size: 4.19% 100%;
     border-right: 1px solid #777777;
     border-bottom: none;
     border-top: none;
+    background-size: 4.1667% 100%;
 }
 
 div.event {

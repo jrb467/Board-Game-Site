@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('content')
+@section('cont')
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -46,12 +46,15 @@
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
+							<div>
+								<button type="submit" class="button wide-button">
 									Login
 								</button>
 
-								<a href="/password/email">Forgot Your Password?</a>
+								<div>
+									<a class='plain' href="/password/email">Forgot Your Password?</a><br>
+									<a class='plain' href="/auth/register">Create account</a>
+								</div>
 							</div>
 						</div>
 					</form>

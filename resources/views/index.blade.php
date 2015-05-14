@@ -7,16 +7,6 @@
 
 @section('cont')
 
-<h1>Errors:</h1>
-<?php
-    echo "<ul>";
-    $arr = $errors->all();
-    foreach($arr as $msg){
-        echo "<li>" . $msg . "</li>";
-    }
-    echo "</ul>";
-?>
-
 <h1>Donlon <b><i>5</i></b> Board Games</h1>
 
 <a class='button' href="/cal">View the current Schedule</a>
@@ -43,23 +33,13 @@
     <input type='hidden' name='_token' id='csrf-token' value='{{ Session::token() }}'>
 </form>
 
-
-<form action='add_event' method='POST'>
-    <h2>Signup!</h2>
-    Player Username: <input type='text' name='username'><br>
-    Game Name: <input type='text' name='game'><br>
-    Starting Time: <input type='datetime-local' name='time'><br>
-    <input type='checkbox' name='first_time' value="true">First Time?<br>
-    <input class="button" type='submit' value='Signup'><br>
-    <input type='hidden' name='_token' id='csrf-token' value='{{ Session::token() }}'>
-</form>
 <p><a class='button' href="info">Info Page</a></p>
 
 <?php
     $players = DB::select('select * from players');
     echo "<h3>Players:</h3><p>";
     foreach($players as $player){
-        echo "Name: " . $player->name . "<br>Username: " . $player->username . "<br><br>";
+        echo "Name: " . $player->name . "<br><br>";
     }
     echo "</p>";
 
@@ -73,7 +53,7 @@
     }
     echo "</p>";
 
-
+    /*
     $events = DB::select('select * from events');
     echo "<h3>Events:</h3><p>";
     foreach($events as $event){
@@ -82,14 +62,13 @@
     }
     echo "</p>";
 
-
     $signups = DB::select('select * from signups');
     echo "<h3>Signups:</h3><p>";
     foreach($signups as $signup){
-        echo "Username: " . $signup->player . "<br>Event ID: " . $signup->event . "<br><br>";
+        echo "User ID: " . $signup->player . "<br>Event ID: " . $signup->event . "<br><br>";
     }
     echo "</p>";
+    */
 ?>
 
 @stop
-

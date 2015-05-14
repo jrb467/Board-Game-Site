@@ -5,5 +5,5 @@
 @stop
 
 @section('error_message')
-    An internal server error occurred. Our apologies.
+    500: An internal server error occurred. Our apologies.
 @stop

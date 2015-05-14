@@ -1,3 +1,7 @@
+html, body{
+    font-family: 'Exo 2', sans-serif;
+}
+
 .button {
     display: inline-block;
     font-family: sans-serif;
@@ -47,4 +51,20 @@
 
 .reject:hover {
     background-color: #dd4444;
+}
+
+.wide-button {
+    display: block;
+    width: 100%;
+    margin: .5em 0;
+}
+
+a.plain{
+    color: #0000ff;
+    text-decoration: none;
+    transition: .2s;
+}
+
+a.plain:hover{
+    color: #0088ff;
 }

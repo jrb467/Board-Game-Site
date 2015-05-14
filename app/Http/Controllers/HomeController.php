@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller {
 
@@ -21,11 +22,11 @@ class HomeController extends Controller {
 	{
 		return view('index');
 	}
-	
+
 	public function add_player(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required|unique:username|max:12',
+            'username' => 'required|unique:players|max:12',
             'name' => 'required|max:50',
         ]);
 		$username = $request->input('username');
@@ -52,7 +53,7 @@ class HomeController extends Controller {
     public function add_event(Request $request){
         $game = $request->input('game');
         $time = $request->input('time');
-        /**
+        /*
         if($request->has('first_time')){
             if($request->input('first_time') == "true"){
                 $first = 1;
@@ -87,9 +88,6 @@ class HomeController extends Controller {
     }
 
     public function event_signup(Request $request, $id){
-        if(! $request->has('username')){
-            abort(403);
-        }
         if($request->has('first_time')){
             if($request->input('first_time') == "true"){
                 $first = 1;
@@ -100,7 +98,7 @@ class HomeController extends Controller {
             $first = 0;
         }
         $signup = new Signup();
-        $signup->player = $request->input('username');
+        $signup->player = Auth::user()->id;
         $signup->event = $id;
         $signup->first_time = $first;
         try{

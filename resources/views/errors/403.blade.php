@@ -5,5 +5,5 @@
 @stop
 
 @section('error_message')
-    The action you have attempted is unauthorized
+    403: The action you have attempted is unauthorized
 @stop
