@@ -19,7 +19,7 @@ $(document).ready(function() {
         var eventTime = timeFromDayAndFraction(week, row, fraction);
 
         create.offset({top: e.pageY - (.5 * create.outerHeight()), left: e.pageX - (.5 * create.outerWidth())}).css("visibility", "visible");
-        create.find("p").empty().append(eventTime.toString());
+        create.find("p").empty().append(eventTime.toUTCString());
         var link = create.find('a');
         link.attr("href", "/create?time=" + eventTime.getTime());
     });

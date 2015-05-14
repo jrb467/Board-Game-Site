@@ -18,8 +18,9 @@ Route::post('add_event', 'HomeController@add_event');
 Route::get('create', function (){
     return view('create');
 });
-Route::get('info', 'HomeController@info');
-Route::get('cal', function (){
+Route::get('/games', function(){ return view('games');});
+Route::get('/players', function(){ return view('players');});
+Route::get('/cal', function (){
     return view('calendar');
 });
 Route::get('events/{id}', 'HomeController@event');
@@ -28,6 +29,10 @@ Route::post('events/{id}/signup', ['middleware' => 'auth', 'uses' => 'HomeContro
 Route::get('games/{name}', 'HomeController@game');
 Route::get('delete/{id}', 'HomeController@delete_event');
 Route::get('cal/events', 'HomeController@get_events');
+Route::get('/logout', 'HomeController@logout');
+Route::get('/home', function(){
+    return redirect('/');
+});
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

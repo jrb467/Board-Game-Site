@@ -23,31 +23,19 @@ class HomeController extends Controller {
 		return view('index');
 	}
 
-	public function add_player(Request $request)
-    {
-        $this->validate($request, [
-            'username' => 'required|unique:players|max:12',
-            'name' => 'required|max:50',
-        ]);
-		$username = $request->input('username');
-        $name = $request->input('name');
-        $player = new Player;
-        $player->username = $username;
-        $player->name = $name;
-        $player->save();
-        return redirect()->back();
-	}
-
     public function add_game(Request $request){
-        $game = new Game();
-        $game->name = $request->input('name');
-        $game->description = $request->input('description');
-        $game->min_length = $request->input('min_length');
-        $game->max_length = $request->input('max_length');
-        $game->min_players = $request->input('min');
-        $game->max_players = $request->input('max');
-        $game->save();
-        return redirect()->back();
+		if(Auth::check() and Auth::user()->is_admin != 0){
+	        $game = new Game();
+	        $game->name = $request->input('name');
+	        $game->description = $request->input('description');
+	        $game->min_length = $request->input('min_length');
+	        $game->max_length = $request->input('max_length');
+	        $game->min_players = $request->input('min');
+	        $game->max_players = $request->input('max');
+	        $game->save();
+	        return redirect()->back();
+		}
+		abort(403);
     }
 
     public function add_event(Request $request){
@@ -76,9 +64,10 @@ class HomeController extends Controller {
         return redirect('/cal');
     }
 
-	public function info()
+	public function logout()
 	{
-        return view('info');
+        Auth::logout();
+		return redirect()->back();
 	}
 
     public function event($id){

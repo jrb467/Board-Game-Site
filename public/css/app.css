@@ -1,7 +1,6 @@
 body {
+    padding: 0 1em;
     display: table;
-    padding: 1em;
-    background: url('/background.svg') fixed;
     background-color: #dddddd;
     margin: auto;
 }
@@ -13,6 +12,41 @@ body {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+#user-info {
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    background-color: #ffffff;
+    border: 1px solid #333333;
+    padding: 2em;
+}
+
+table#main-nav {
+    table-layout: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+table#main-nav td{
+    font-size: 1.25em;
+    border: 1px solid #2299ee;
+    background-color: #33aaff;
+    text-align: center;
+    width: 6em;
+    height: 5em;
+    transition: .2s;
+    vertical-align: center;
+}
+
+table#main-nav tr{
+    position: relative;
+}
+
+table#main-nav td:hover{
+    background-color: #aa33ff;
 }
 
 input {
@@ -37,4 +71,9 @@ input {
 
 .padded{
     padding: 1em;
+}
+
+.li-equiv{
+    width: 100%;
+    border-bottom: 1px solid #aaaaaa;
 }

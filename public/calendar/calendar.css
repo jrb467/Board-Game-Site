@@ -19,8 +19,8 @@
 }
 
 table {
-    border-collapse:collapse;
-    width: 200%;
+    border-collapse: collapse;
+    width: 125%;
 }
 
 td {
@@ -55,7 +55,6 @@ td.cal {
     position: relative;
     height: 5em;
     width: 100%;
-    /* background: repeating-linear-gradient(-45deg, #eeeeee, #eeeeee 25%, #e3e3e3 25%, #e3e3e3 50%) top left fixed; */
     background: repeating-linear-gradient(90deg, #eeeeee, #eeeeee 24%, #dddddd 24%, #dddddd 25%, #eeeeee 25%,
         #eeeeee 49%, #bbbbbb 49%, #bbbbbb 50%, #eeeeee 50%,
         #eeeeee 74%, #dddddd 74%, #dddddd 75%, #eeeeee 75%,
@@ -158,14 +157,4 @@ div.event:hover {
 
 img.icon {
     height: 1em;
-}
-
-a.box-link {
-    text-decoration: none;
-    color: #000000;
-}
-
-a.box-link:active {
-    text-decoration: none;
-    color: #000000;
 }

@@ -1,4 +1,4 @@
-@extends('base')
+@extends('app')
 
 <?php use App\Signup; ?>
 
@@ -11,8 +11,9 @@
     Schedule
 @stop
 
-@section('content')
+@section('cont')
 
+<div class="empty">
 <div id="calendar">
     <table>
 
@@ -28,6 +29,7 @@
         }
         ?>
     </table>
+</div>
 </div>
 <div id="create"><p></p><br><a class="button-prim accept" href="/create">New Event</a><span class="button-prim reject">Cancel</span></div>
 <a class="button" href="/">Return to Index</a>
