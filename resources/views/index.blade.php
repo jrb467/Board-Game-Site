@@ -13,7 +13,7 @@
 
 <div id="input_form">
     <h2>Player creation:</h2>
-    <form action='add_player' method='POST'>
+    <form action='/add_player' method='POST'>
         Name: <input type='text' name='name'><br>
         Username: <input type='text' name="username"><br>
         <input type='submit' value='Create User'><br>
@@ -21,7 +21,7 @@
     </form>
 </div>
 
-<form action='add_game' method='POST'>
+<form action='/add_game' method='POST'>
     <h2>Game creation:</h2>
     Game Name: <input type='text' name='name'><br>
     Game Description: <input type='text' name='description'><br>
