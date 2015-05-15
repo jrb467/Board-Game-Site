@@ -19,7 +19,7 @@
     <form action="/add_event" method="POST" id="create">
         <input class="button" type="submit" value="Create Game">
         <input type="hidden" name="time" value="{{ $timestamp }}">
-        <input type='hidden' name='_token' id='csrf-token' value='{{ Session::token() }}'>
+        <input type='hidden' name='_token' id='csrf-token' value='{{ csrf_token() }}'>
     </form>
 @stop
 
