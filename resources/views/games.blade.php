@@ -9,7 +9,7 @@
         echo "<h1>" . $game->name . "</h1>" . $game->min_length . " - " . $game->max_length . " minutes<br>"
                  . $game->min_players . " - "
                 . $game->max_players . " Players<br><br>"
-                . "<b>" . $game->description . "</b><br><br><br>";
+                . "<div class='narrow'><b>" . $game->description . "</b></div><br><br><br>";
         echo "</p></div>";
     }
 ?>
