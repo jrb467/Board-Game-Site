@@ -1,5 +1,9 @@
 @extends('app')
 
+@section('styles')
+    <script src='/js/mainmenu.js'></script>
+@stop
+
 @section('title')
     Index
 @stop
@@ -9,17 +13,25 @@
 
 <h1>Cornell Board Games</h1>
 
-<table id="main-nav">
-<tbody>
-    <tr>
-        <td><a class="box-link" href="/auth/login"><p class="td-cent">Login</p></a></td>
-        <td><a class="box-link" href="/cal"><p class="td-cent">Calendar</p></a></td>
-    </tr>
-    <tr>
-        <td><a class="box-link" href="/players"><p class="td-cent">Players</p></a></td>
-        <td><a class="box-link" href="/games"><p class="td-cent">Games</p></a></td>
-    </tr>
-</tbody>
-</table>
+<div class="link-box">
+    <a class="index-menu" href="/auth/login">
+        <div class="link-swell">Login</div>
+    </a>
+</div>
+<div class="link-box">
+    <a class="index-menu" href="/cal">
+        <div class="link-swell">Calendar</div>
+    </a>
+</div>
+<div class="link-box">
+    <a class="index-menu" href="/players">
+        <div class="link-swell">Players</div>
+    </a>
+</div>
+<div class="link-box">
+    <a class="index-menu" href="/games">
+        <div class="link-swell">Games</div>
+    </a>
+</div>
 
 @stop

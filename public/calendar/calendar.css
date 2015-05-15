@@ -74,7 +74,7 @@ div.event {
     border: 2px solid #ddaaaa;
     display: inline-block;
     transition: background .2s, border .2s;
-    overflow: visible;
+    overflow: hidden;
 }
 
 div.min {
@@ -136,6 +136,16 @@ div.event:hover {
     background-color: #ffaaaa;
     border: 2px solid #bb8888;
     z-index: 1;
+}
+
+a.box-link {
+    text-decoration: none;
+    color: #000000;
+}
+
+a.box-link:active {
+    text-decoration: none;
+    color: #000000;
 }
 
 #create {

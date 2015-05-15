@@ -73,23 +73,10 @@ a.plain:hover{
     color: #0088ff;
 }
 
-a.box-link {
-    display: table;
-    width: 100%;
-    height: 100%;
+a.index-menu {
     text-decoration: none;
     color: #000000;
-}
-
-a.box-link:active {
-    text-decoration: none;
-    color: #000000;
-}
-
-.td-cent{
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
+    font-size: 2em;
 }
 
 .empty {

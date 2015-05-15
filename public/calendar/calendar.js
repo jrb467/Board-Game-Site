@@ -7,21 +7,21 @@ $(document).ready(function() {
     });
     $("td.cal").click(function (e) {
         var row = $(this).parent().parent().children().index($(this).parent()) - 1;
-        var pos = $(this).position().left;
 
         var width = $(this).width();
 
-        var offset = e.pageX - pos;
+        var x = e.clientX - $(this).offset().left;
+        var y = e.clientY;
 
-        var fraction = offset/width;
+        var fraction = x/width;
 
         var week = startOfWeek();
         var eventTime = timeFromDayAndFraction(week, row, fraction);
 
-        create.offset({top: e.pageY - (.5 * create.outerHeight()), left: e.pageX - (.5 * create.outerWidth())}).css("visibility", "visible");
-        create.find("p").empty().append(eventTime.toUTCString());
+        create.offset({top: y - (0.5 * create.outerHeight()), left: e.clientX - (0.5 * create.outerWidth())}).css("visibility", "visible");
+        create.find("p").empty().append(formatTime(eventTime));
         var link = create.find('a');
-        link.attr("href", "/create?time=" + eventTime.getTime());
+        link.attr("href", "/create?time=" + eventTime.getTime() + "&tzo=" + eventTime.getTimezoneOffset());
     });
     create.find("span").click(function (e){
         create.css("visibility", "hidden");
@@ -89,7 +89,7 @@ $(document).ready(function() {
                 var offset = (startTime.getTime() - date.getTime())/864000;
 
                 var newDiv =
-                    "<a href='/events/" + json[i].event_id + "' class='box-link'><div class='event' style='left: "+
+                    "<a href='/events/" + json[i].event_id + "?tzo=" + date.getTimezoneOffset() + "' class='box-link'><div class='event' style='left: "+
                     offset+"%;width:"+maxWidth+"%'><div class='min' style='width: " + minWidth + "%'></div><div class='title'><p>" + json[i].game_name +
                     "</p></div><div class='hover'><p>View <img src='/glyphs/glyphicons-28-search.png' class='icon'></p></div></div></a>";
                 var newDivObj = $($.parseHTML(newDiv));
@@ -105,7 +105,7 @@ $(document).ready(function() {
 function timeFromDayAndFraction(week, dayOfWeek, fraction){
     var day = new Date(week);
     day.setDate(week.getDate() + dayOfWeek);
-    fraction = fraction*24 + .125;
+    fraction = fraction*24 + 0.125;
     var hours = Math.floor(fraction);
     fraction = Math.floor((fraction % 1)*4);
     var minutes = fraction*15;
@@ -115,7 +115,7 @@ function timeFromDayAndFraction(week, dayOfWeek, fraction){
 
 function startOfWeek(){
     var cur = new Date();
-    var first = (cur.getDay() != 0) ? (cur.getDate() - cur.getDay() + 1) : (cur.getDate()-6); //gets date of first day of week (1-31)
+    var first = (cur.getDay() !== 0) ? (cur.getDate() - cur.getDay() + 1) : (cur.getDate()-6); //gets date of first day of week (1-31)
     cur.setDate(first);
     cur.setHours(0,0,0,0);
     return cur;
@@ -123,8 +123,19 @@ function startOfWeek(){
 
 function formatTime(date){
     var hours = date.getHours();
-    var e = 3;
-    return hours;
+    var minutes = date.getMinutes();
+    if(minutes.toString().length == 1) minutes = "0" + minutes;
+    var day = date.getDate();
+    var month = date.getMonth()+1;
+    var year = date.getFullYear().toString().substring(2);
+    var mer;
+    if(date.getHours >= 12){
+        mer = "PM";
+    }else{
+        mer = "AM";
+    }
+    var tString = hours + ":" + minutes + " " + mer + ", " + month + "/" + day + "/" + year;
+    return tString;
 }
 
 function endOfWeek(){

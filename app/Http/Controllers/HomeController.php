@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller {
 
+	/*
+	*	Takes in a timezone offset (in minutes), and a DateTime object, and
+	*	outputs a string containing the formatted datetime.
+	*/
+	public function formatForTimezone($datetime, $tzo){
+		$diff = new \DateInterval("PT" . $tzo . "M");
+		$newDate = $datetime->sub($diff);
+		$timestring = $newDate->format('l\, g:i a, m/d/y');
+		return $timestring;
+	}
+
 	/**
 	 * Show the application dashboard to the user.
 	 *
@@ -54,7 +65,7 @@ class HomeController extends Controller {
          * **/
 
         $event = new Event();
-        $event->start_time = $time;
+        $event->start_time = (new \DateTime())->setTimestamp($time)->format('Y-m-d H:i:s');
         /**
          * $event->username = $username;
          * NOTE: should also create a signup here too
@@ -70,11 +81,33 @@ class HomeController extends Controller {
 		return redirect()->back();
 	}
 
-    public function event($id){
+    public function event(Request $request, $id){
         $event = Event::whereEventId($id)->join('games', 'game_name', '=', 'name')->first();
         if(is_null($event)) return view('index');
-        return view('event', ['event' => $event]);
+		$original = new \DateTime($event->start_time);
+		if($request->has('tzo')){//has timezone offset
+			$timestring = HomeController::formatForTimezone($original, $request->input('tzo'));
+		    return view('event', ['event' => $event, 'time' => $timestring]);
+		}else{
+			$timestring = $original->format('l\, g:i a, m/d/y O e');
+	        return view('event', ['event' => $event, 'time' => $timestring]);
+		}
     }
+
+	public function create_event(Request $request){
+		if(! $request->has('time')){
+			abort(409);
+		}
+		$origTime = (new \DateTime())->setTimestamp($request->input('time')/1000);
+		$stamp = $origTime->getTimestamp();
+		if($request->has('tzo')){
+			$timestring = HomeController::formatForTimezone($origTime, $request->input('tzo'));
+			return view('create', ['time' => $timestring, 'timestamp' => $stamp]);
+		}else{
+			$timestring = $origTime->format('l\, g:i a, m/d/y O e');
+	        return view('create', ['time' => $timestring, 'timestamp' => $stamp]);
+		}
+	}
 
     public function event_signup(Request $request, $id){
         if($request->has('first_time')){

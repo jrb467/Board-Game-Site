@@ -15,9 +15,7 @@ Route::get('/', 'HomeController@index');
 Route::post('add_player', 'HomeController@add_player');
 Route::post('add_game', 'HomeController@add_game');
 Route::post('add_event', 'HomeController@add_event');
-Route::get('create', function (){
-    return view('create');
-});
+Route::get('/create', 'HomeController@create_event');
 Route::get('/games', function(){ return view('games');});
 Route::get('/players', function(){ return view('players');});
 Route::get('/cal', function (){
@@ -26,7 +24,6 @@ Route::get('/cal', function (){
 Route::get('events/{id}', 'HomeController@event');
 Route::post('events/{id}/signup', ['middleware' => 'auth', 'uses' => 'HomeController@event_signup']);
 
-Route::get('games/{name}', 'HomeController@game');
 Route::get('delete/{id}', 'HomeController@delete_event');
 Route::get('cal/events', 'HomeController@get_events');
 Route::get('/logout', 'HomeController@logout');

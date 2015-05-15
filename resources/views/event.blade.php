@@ -8,9 +8,9 @@
 
 @section('info_content')
     <h1>{{ $event->game_name }}</h1>
-    <p>{{ (new DateTime($event->start_time))->format('l\, g:i a, m/d/y O e') }}</p>
-    <h2>Min length: </h2>
-    <p>{{ $event->min_length }}</p>
+    <p>{{ $time }}</p>
+    <p>{{ $event->min_length }}-{{$event->max_length}} minutes</p>
+    <div class="narrow"><b>{{ $event->description }}</b></div>
     <?php
         echo "<form action='/delete/" . $event->event_id . "'>";
         echo "<input type='submit' value='Delete Event'></form>";

@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('styles')
+@section('sty')
     <link rel="stylesheet" href="/css/error.css">
 @stop
 
