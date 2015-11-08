@@ -3,6 +3,8 @@ A site for signing up for our floor's board games. Has code for a CSS/JQuery bas
 
 Based on the Laravel PHP framework.
 
+**NOTE**: An old-ish project. Ignore the frontend, it's pretty ugly. Although maybe you'll think the same of the backend.
+
 ### How to Run
 
 Requires an installation of Composer: installation instructions [Here](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
