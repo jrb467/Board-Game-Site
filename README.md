@@ -3,7 +3,9 @@ A site for signing up for our floor's board games. Has code for a CSS/JQuery bas
 
 Based on the Laravel PHP framework.
 
-**NOTE**: An old-ish project. Ignore the frontend, it's pretty ugly. Although maybe you'll think the same of the backend.
+**NOTE**: An old-ish project. Isn't actually even synced up on my local machine anymore, here mostly for archival purposes. Ignore the frontend, it's pretty ugly. Although maybe you'll think the same of the backend.
+
+Also it may straight up not work. It should after some fiddling, but no gaurauntees.
 
 ### How to Run
 
